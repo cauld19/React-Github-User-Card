@@ -18,6 +18,7 @@ const SearchForm = props => {
                     type="text"
                     name="userSearch"
                     value={props.usersearchName}
+                    placeholder=""
                 />
                 <button>Search for any github user!</button> 
             </form>

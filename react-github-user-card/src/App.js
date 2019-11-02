@@ -4,6 +4,7 @@ import './App.css';
 import MyUserCard from "./components/myUserCard"
 import FollowerUserCardList from "./components/FollowerUserCardList"
 import SearchForm from "./components/SearchForm"
+import ErrorPage from "./components/ErrorPage"
 
 class App extends React.Component {
 
@@ -56,9 +57,17 @@ class App extends React.Component {
         });
   }
 
+   
+  
+
+
+
   handleFetchUser = e => {
     e.preventDefault();
-    fetch(`https://api.github.com/users/${this.state.usersearchName}`)
+    if (this.state.usersearchName === ""){
+      e.preventDefault();
+    } else {
+      fetch(`https://api.github.com/users/${this.state.usersearchName}`)
       .then(res => res.json())
       .then(res => {
         console.log(
@@ -72,28 +81,25 @@ class App extends React.Component {
       })
       .catch(err => {
         console.log(
-          "bk: index.js: App: componentDidMount: fetch: catch: err: ",
+          "bk: index.js: App: componentDidMount: fetch: catch1: err: ",
           err
         );
       });
-
       fetch(`https://api.github.com/users/${this.state.usersearchName}/followers`)
         .then(res => res.json())
         .then(res => {
-          console.log(
-            "ca: App.js: App: componentDidMount: fetch: then: follower res: ",
-            res[0]
-          );
           this.setState({
             followerData: res,
           });
         })
         .catch(err => {
+
           console.log(
-            "bk: index.js: App: componentDidMount: fetch: catch: err: ",
+            "bk: index.js: App: componentDidMount: fetch: catch2: err: ",
             err
           );
         });
+    }
   };
 
   handleChange = e => {
@@ -101,18 +107,6 @@ class App extends React.Component {
       searchName: e.target.value
     })
   }
-
-  // handleChange = e => {
-  //   if(input.name === "search") {
-  //     this.setState({
-  //       searchName: e.target.value
-  //     })
-  //   } else {
-  //     this.setState({
-  //       usersearchName: e.target.value
-  //     })
-  //   }
-  // }
 
   handlUserChange = e => {
     this.setState({
