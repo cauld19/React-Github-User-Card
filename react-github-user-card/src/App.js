@@ -11,7 +11,8 @@ class App extends React.Component {
     data: [],
     permFollowerData: [],
     followerData: [],
-    searchName: ""
+    searchName: "",
+    usersearchName: ""
   };
 
   componentDidMount() {
@@ -53,9 +54,37 @@ class App extends React.Component {
         });
   }
 
+  handleFetchUser = e => {
+    e.preventDefault();
+    fetch(`https://api.github.com/users/${this.state.usersearchName}`)
+      .then(res => res.json())
+      .then(res => {
+        console.log(
+          "bk: index.js: App: componentDidMount: fetch: then: res: ",
+          res
+        );
+        this.setState({
+          data: res,
+          usersearchName: ""
+        });
+      })
+      .catch(err => {
+        console.log(
+          "bk: index.js: App: componentDidMount: fetch: catch: err: ",
+          err
+        );
+      });
+  };
+
   handleChange = e => {
     this.setState({
       searchName: e.target.value
+    })
+  }
+
+  handlUserChange = e => {
+    this.setState({
+      usersearchName: e.target.value
     })
   }
   
@@ -72,9 +101,9 @@ class App extends React.Component {
         followerData: [...filteredSearch],
         searchName: ""
       })
-       
     }
   }
+
 
   resetFollowers = () => {
     this.setState({
@@ -93,9 +122,12 @@ class App extends React.Component {
           />
           <SearchForm 
             searchName={this.state.searchName}
+            usersearchName={this.state.usersearchName}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
+            handleFetchUser={this.handleFetchUser}
             resetFollowers={this.resetFollowers}
+            handlUserChange={this.handlUserChange}
           />
           <FollowerUserCardList  followerData={this.state.followerData} />
         </div>

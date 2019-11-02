@@ -12,6 +12,16 @@ const SearchForm = props => {
                 />
                 <button>Search for a follower!</button> 
             </form>
+            <form className="search-form" onSubmit={props.handleFetchUser}>
+                <input 
+                    onChange={props.handlUserChange}
+                    type="text"
+                    name="search"
+                    value={props.usersearchName}
+                />
+                <button>Search for any github user!</button> 
+            </form>
+
             <div>
                 <button onClick={() => props.resetFollowers()}>Reset</button>
             </div>
