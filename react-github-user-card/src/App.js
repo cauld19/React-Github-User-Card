@@ -3,12 +3,14 @@ import './App.css';
 
 import MyUserCard from "./components/myUserCard"
 import FollowerUserCardList from "./components/FollowerUserCardList"
+import SearchForm from "./components/SearchForm"
 
 class App extends React.Component {
 
   state = {
     data: [],
-    followerData: []
+    followerData: [],
+    searchName: ""
   };
 
   componentDidMount() {
@@ -49,6 +51,26 @@ class App extends React.Component {
         });
   }
 
+  handleChange = e => {
+    this.setState({
+      searchName: e.target.value
+    })
+  }
+  
+  handleSubmit = e => {
+    e.preventDefault();
+    const filteredSearch = this.state.followerData.filter(user => user.login.toLowerCase().includes(this.state.searchName.toLowerCase()))
+    if(filteredSearch.length === 0) {
+      alert("none")
+      e.target.reset();
+    } else {
+      this.setState({
+        followerData: [...filteredSearch],
+      })
+      e.target.reset(); 
+    }
+  }
+
 
 
   render() {
@@ -57,6 +79,11 @@ class App extends React.Component {
         <div>
           <MyUserCard 
             data={this.state.data}
+          />
+          <SearchForm 
+            searchName={this.state.searchName}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
           />
           <FollowerUserCardList  followerData={this.state.followerData} />
         </div>
