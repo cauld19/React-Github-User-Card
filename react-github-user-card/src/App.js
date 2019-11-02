@@ -76,6 +76,24 @@ class App extends React.Component {
           err
         );
       });
+
+      fetch(`https://api.github.com/users/${this.state.usersearchName}/followers`)
+        .then(res => res.json())
+        .then(res => {
+          console.log(
+            "ca: App.js: App: componentDidMount: fetch: then: follower res: ",
+            res[0]
+          );
+          this.setState({
+            followerData: res,
+          });
+        })
+        .catch(err => {
+          console.log(
+            "bk: index.js: App: componentDidMount: fetch: catch: err: ",
+            err
+          );
+        });
   };
 
   handleChange = e => {
@@ -83,6 +101,18 @@ class App extends React.Component {
       searchName: e.target.value
     })
   }
+
+  // handleChange = e => {
+  //   if(input.name === "search") {
+  //     this.setState({
+  //       searchName: e.target.value
+  //     })
+  //   } else {
+  //     this.setState({
+  //       usersearchName: e.target.value
+  //     })
+  //   }
+  // }
 
   handlUserChange = e => {
     this.setState({

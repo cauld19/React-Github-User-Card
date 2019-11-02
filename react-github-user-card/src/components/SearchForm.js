@@ -16,7 +16,7 @@ const SearchForm = props => {
                 <input 
                     onChange={props.handlUserChange}
                     type="text"
-                    name="search"
+                    name="userSearch"
                     value={props.usersearchName}
                 />
                 <button>Search for any github user!</button> 
