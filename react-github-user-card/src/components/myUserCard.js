@@ -5,6 +5,7 @@ const MyUserCard = props => {
     return (
         <div>
             <div>
+                <img src="http://ghchart.rshah.org/cauld19" alt="2016rshah's Github chart" /> 
                 <img src={props.data.avatar_url} key={props.data.avatar_url} alt={props.data.avatar_url}/>
                 <h2>{props.data.name}</h2>
                 <h3>{props.data.login}</h3>
