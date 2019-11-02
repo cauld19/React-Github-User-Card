@@ -4,7 +4,7 @@ import './App.css';
 import MyUserCard from "./components/myUserCard"
 import FollowerUserCardList from "./components/FollowerUserCardList"
 import SearchForm from "./components/SearchForm"
-import ErrorPage from "./components/ErrorPage"
+
 
 class App extends React.Component {
 
