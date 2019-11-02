@@ -8,6 +8,7 @@ import SearchForm from "./components/SearchForm"
 class App extends React.Component {
 
   state = {
+    permData: [],
     data: [],
     permFollowerData: [],
     followerData: [],
@@ -24,7 +25,8 @@ class App extends React.Component {
           res
         );
         this.setState({
-          data: res
+          data: res,
+          permData: res
         });
       })
       .catch(err => {
@@ -107,7 +109,8 @@ class App extends React.Component {
 
   resetFollowers = () => {
     this.setState({
-      followerData: this.state.permFollowerData
+      followerData: this.state.permFollowerData,
+      data: this.state.permData
     })
   }
 
