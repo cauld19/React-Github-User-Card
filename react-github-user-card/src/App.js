@@ -9,6 +9,7 @@ class App extends React.Component {
 
   state = {
     data: [],
+    permFollowerData: [],
     followerData: [],
     searchName: ""
   };
@@ -40,7 +41,8 @@ class App extends React.Component {
             res[0]
           );
           this.setState({
-            followerData: res
+            followerData: res,
+            permFollowerData: res
           });
         })
         .catch(err => {
@@ -62,13 +64,22 @@ class App extends React.Component {
     const filteredSearch = this.state.followerData.filter(user => user.login.toLowerCase().includes(this.state.searchName.toLowerCase()))
     if(filteredSearch.length === 0) {
       alert("none")
-      e.target.reset();
+      this.setState({
+        searchName: ""
+      });
     } else {
       this.setState({
         followerData: [...filteredSearch],
+        searchName: ""
       })
-      e.target.reset(); 
+       
     }
+  }
+
+  resetFollowers = () => {
+    this.setState({
+      followerData: this.state.permFollowerData
+    })
   }
 
 
@@ -84,6 +95,7 @@ class App extends React.Component {
             searchName={this.state.searchName}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
+            resetFollowers={this.resetFollowers}
           />
           <FollowerUserCardList  followerData={this.state.followerData} />
         </div>
