@@ -6,7 +6,7 @@ const MyUserCard = props => {
         <div>
             <div className="user-card-container"> 
                 <img src={props.data.avatar_url} key={props.data.avatar_url} alt={props.data.avatar_url}/>
-                <img src={`http://ghchart.rshah.org/${props.data.login}`} alt={`${props.data.login}'s Github chart`} />
+                <img className="github-image-graph" src={`http://ghchart.rshah.org/${props.data.login}`} alt={`${props.data.login}'s Github chart`} />
                 <h2>Name: {props.data.name}</h2>
                 <h3>UserName: {props.data.login}</h3>
                 <h4>Location: {props.data.location}</h4>
