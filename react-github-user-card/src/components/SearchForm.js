@@ -2,15 +2,17 @@ import React from 'react';
 
 const SearchForm = props => {
     return (
-        <div>
+        <div className="search-form-container">
             <form className="search-form" onSubmit={props.handleSubmit}>
                 <input 
                     onChange={props.handleChange}
                     type="text"
                     name="search"
                     value={props.searchName}
+                    placeholder="...Search for a follower!"
+                    className="input-form"
                 />
-                <button>Search for a follower!</button> 
+                <button className="search-button">Submit</button> 
             </form>
             <form className="search-form" onSubmit={props.handleFetchUser}>
                 <input 
@@ -18,13 +20,14 @@ const SearchForm = props => {
                     type="text"
                     name="userSearch"
                     value={props.usersearchName}
-                    placeholder=""
+                    placeholder="...Search for any github user!"
+                    className="input-form"
                 />
-                <button>Search for any github user!</button> 
+                <button className="search-button">Submit</button> 
             </form>
 
             <div>
-                <button onClick={() => props.resetFollowers()}>Reset</button>
+                <button className="reset-button"onClick={() => props.resetFollowers()}>Reset</button>
             </div>
             
         </div>

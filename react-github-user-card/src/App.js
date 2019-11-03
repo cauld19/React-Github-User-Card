@@ -116,8 +116,9 @@ class App extends React.Component {
   }
   
   handleSubmit = e => {
+    const { followerData, searchName } = this.state;
     e.preventDefault();
-    const filteredSearch = this.state.followerData.filter(user => user.login.toLowerCase().includes(this.state.searchName.toLowerCase()))
+    const filteredSearch = followerData.filter(user => user.login.toLowerCase().includes(searchName.toLowerCase()))
     if(filteredSearch.length === 0) {
       alert("none")
       this.setState({
