@@ -1,0 +1,51 @@
+.user-card-container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid lightgray;
+  width: 750px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.search-form-container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  width: 250px;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input-form {
+  width: 200px;
+  height: 25px;
+  padding: 0;
+  border: 1px solid grey;
+  margin-top: 5px;
+}
+
+.search-button{
+  width: 202px;
+  height: 25px;
+  padding: 0;
+  border: none;
+  margin-top: 5px;
+}
+
+
+.follower-title {
+  text-align: center;
+}
+
+.github-image-graph {
+  margin: 10px;
+}
